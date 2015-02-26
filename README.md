@@ -1,0 +1,2 @@
+# dispatchesque
+angular callback dispatcher
