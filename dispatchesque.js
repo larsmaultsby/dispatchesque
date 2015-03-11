@@ -2,6 +2,7 @@
 (function(window, angular){
   angular.module('dispatchesque',[])
     .factory('dispatchesque',function(){
+      var factory = function () {
       var self = this;
       var callbacks = {};
       var currentID = 0;
@@ -29,11 +30,11 @@
       };
       self.watch = function(event, cb){
         if(!callbacks[event]) callbacks[event] = {};
-        currentID++;
         callbacks[event][currentID] = {
           cb:cb,
           waitFor:[]
         };
+        currentID++;
         return {
           id: currentID,
           value: self[event],
@@ -52,6 +53,7 @@
 
       }
 
-      return self;
+      };
+      return factory;
     })
 })(window, window.angular)
